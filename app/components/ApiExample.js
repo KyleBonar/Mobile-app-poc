@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import axios from 'axios'
 
 import StatusBarBackground from './StatusBarBackground'
@@ -15,11 +15,12 @@ class ApiExample extends Component {
 	}
 
 	componentWillMount() {
+		//invoke api function
 		this.getApi()
 	}
 
+	//function to call arbitrary api and create a view with response data
 	getApi() {
-		//example api to get some data back from
 		axios.get('https://jsonplaceholder.typicode.com/albums')
 			.then( (response) => {
 				this.setState({
@@ -30,6 +31,7 @@ class ApiExample extends Component {
 				console.log(error);
 			});
 	}
+
 
 	createListItems(items) {
 		if(items != undefined) {
@@ -50,7 +52,10 @@ class ApiExample extends Component {
 			<View>
 				<StatusBarBackground></StatusBarBackground>
 				<GoToHome navigator={this.props.navigator} name={this.props.name}></GoToHome>
-				{this.createListItems(this.state.feed)}
+				<Text style={{textAlign: "center", fontSize: 18}}>This page connects to arbitrary API and displays data from it</Text>
+				<ScrollView>
+					{this.createListItems(this.state.feed)}
+				</ScrollView>
 			</View>
 		)
 	}

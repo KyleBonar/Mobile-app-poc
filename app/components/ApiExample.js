@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import axios from 'axios'
 
 import StatusBarBackground from './StatusBarBackground'
@@ -19,7 +19,30 @@ class ApiExample extends Component {
 	}
 
 	getApi() {
-		// axios.get
+		//example api to get some data back from
+		axios.get('https://jsonplaceholder.typicode.com/albums')
+			.then( (response) => {
+				this.setState({
+					feed: response.data
+				})
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	}
+
+	createListItems(items) {
+		if(items != undefined) {
+			return (items.map( (item, index) => {
+				return (
+					<TouchableOpacity key={item.id}>
+						<Text>{item.title}</Text>
+					</TouchableOpacity>
+				)
+			}))
+		} else {
+			return <Text>Loading...</Text>
+		}
 	}
 
 	render() {
@@ -27,7 +50,7 @@ class ApiExample extends Component {
 			<View>
 				<StatusBarBackground></StatusBarBackground>
 				<GoToHome navigator={this.props.navigator} name={this.props.name}></GoToHome>
-				<Text> This is from Printspot</Text>
+				{this.createListItems(this.state.feed)}
 			</View>
 		)
 	}

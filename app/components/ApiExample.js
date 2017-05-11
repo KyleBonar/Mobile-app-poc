@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native'
 import axios from 'axios'
 
 import StatusBarBackground from './StatusBarBackground'
@@ -21,10 +21,10 @@ class ApiExample extends Component {
 
 	//function to call arbitrary api and create a view with response data
 	getApi() {
-		axios.get('https://jsonplaceholder.typicode.com/albums')
+		axios.get('https://randomuser.me/api/?results=50&nat=us')
 			.then( (response) => {
 				this.setState({
-					feed: response.data
+					feed: response.data.results
 				})
 			})
 			.catch(function (error) {
@@ -36,14 +36,22 @@ class ApiExample extends Component {
 	createListItems(items) {
 		if(items != undefined) {
 			return (items.map( (item, index) => {
-				return (
-					<TouchableOpacity key={item.id}>
-						<Text>{item.title}</Text>
-					</TouchableOpacity>
-				)
+				if(item.id.value) {
+					return (
+						<TouchableOpacity key={item.id.value} style={styles.personRow}>
+							<Image style={styles.personImage} source={{uri: item.picture.thumbnail}} />
+							<View style={styles.personInformation}>
+								<Text style={styles.personFullName}>{item.name.first} {item.name.last}</Text>
+								<Text style={styles.personEmail}>{item.email}</Text>
+								<Text sytle={styles.personPhone}>{item.phone}</Text>
+
+							</View>
+						</TouchableOpacity>
+					)
+				}
 			}))
 		} else {
-			return <Text>Loading...</Text>
+			return <Text style={{textAlign: "center"}}>Loading...</Text>
 		}
 	}
 
@@ -52,7 +60,7 @@ class ApiExample extends Component {
 			<View>
 				<StatusBarBackground></StatusBarBackground>
 				<GoToHome navigator={this.props.navigator} name={this.props.name}></GoToHome>
-				<Text style={{textAlign: "center", fontSize: 18}}>This page connects to arbitrary API and displays data from it</Text>
+				<Text style={{textAlign: "center"}}>Example Directory</Text>
 				<ScrollView>
 					{this.createListItems(this.state.feed)}
 				</ScrollView>
@@ -60,5 +68,37 @@ class ApiExample extends Component {
 		)
 	}
 }
+
+const styles = StyleSheet.create({
+	personRow: {
+		flexDirection: "row",
+		justifyContent: "flex-start",
+		marginBottom: 10
+	},
+	personImage: {
+		height: 40,
+		width: 40,
+		borderRadius: 20,
+		marginTop: 5,
+	},
+	personInformation:{
+		marginLeft: 10,
+		flexDirection: "column",
+		borderBottomWidth: 1,
+		borderBottomColor: "#515151",
+		paddingBottom: 2,
+		flexGrow: 1
+
+	},
+	personFullName: {
+
+	},
+	personEmail: {
+
+	},
+	personPhone: {
+
+	}
+})
 
 module.exports = ApiExample

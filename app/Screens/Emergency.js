@@ -2,10 +2,10 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-import StatusBarBackground from './StatusBarBackground'
-import GoToHome from './GoToHome'
+import StatusBarBackground from '../Components/StatusBarBackground'
+import GoToHome from '../Components/GoToHome'
 
-class Bookstore extends Component {
+class Emergency extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -14,10 +14,10 @@ class Bookstore extends Component {
 			<View>
 				<StatusBarBackground></StatusBarBackground>
 				<GoToHome navigator={this.props.navigator} name={this.props.name}></GoToHome>
-				<Text> This is from Bookstore</Text>
+				<Text> This is from Emergency</Text>
 			</View>
 		)
 	}
 }
 
-module.exports = Bookstore
+module.exports = Emergency

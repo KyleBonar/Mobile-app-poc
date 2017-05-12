@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native'
 import axios from 'axios'
 
-import StatusBarBackground from './StatusBarBackground'
-import GoToHome from './GoToHome'
+import StatusBarBackground from '../Components/StatusBarBackground'
+import GoToHome from '../Components/GoToHome'
 
 
 class ApiExample extends Component {

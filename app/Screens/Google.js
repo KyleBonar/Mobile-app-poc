@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import { Text, View, WebView } from 'react-native'
 
-import StatusBarBackground from './StatusBarBackground'
-import GoToHome from './GoToHome'
+import StatusBarBackground from '../Components/StatusBarBackground'
+import GoToHome from '../Components/GoToHome'
 
 class Google extends Component {
 	constructor(props) {

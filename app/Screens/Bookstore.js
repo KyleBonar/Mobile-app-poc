@@ -2,10 +2,10 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-import StatusBarBackground from './StatusBarBackground'
-import GoToHome from './GoToHome'
+import StatusBarBackground from '../Components/StatusBarBackground'
+import GoToHome from '../Components/GoToHome'
 
-class Sponsors extends Component {
+class Bookstore extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -14,10 +14,10 @@ class Sponsors extends Component {
 			<View>
 				<StatusBarBackground></StatusBarBackground>
 				<GoToHome navigator={this.props.navigator} name={this.props.name}></GoToHome>
-				<Text> This is from Sponsors</Text>
+				<Text> This is from Bookstore</Text>
 			</View>
 		)
 	}
 }
 
-module.exports = Sponsors
+module.exports = Bookstore

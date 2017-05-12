@@ -2,14 +2,23 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
-import StatusBarBackground from './StatusBarBackground'
-import GoToHome from './GoToHome'
+import StatusBarBackground from '../Components/StatusBarBackground'
+import GoToHome from '../Components/GoToHome'
 
 class PersonaView extends Component {
 	constructor(props) {
 		super(props)
 
 		this.navigate = this.navigate.bind(this)
+
+		this.state = {
+			role: undefined
+		}
+	}
+
+	componentWillMount() {
+		let newRole = this.props.role
+		this.setState({role: newRole})
 	}
 
 	//this will push a new screen on top of the homepage
@@ -18,7 +27,7 @@ class PersonaView extends Component {
 			name
 		})	
 	}
-	
+
 	render() {
 		return(
 			<View>
@@ -27,7 +36,7 @@ class PersonaView extends Component {
 				
 				<TouchableOpacity
 					style={style.personaBox}
-					onPress={ () => this.props.setRole("Student")}
+					onPress={this.props.updateRole.bind(null, "Student")}
 				>
 					<Text style={style.personaChecked}>
 						{this.props.role === "Student" ? "+    " : "       "}
@@ -39,7 +48,7 @@ class PersonaView extends Component {
 
 				<TouchableOpacity
 					style={style.personaBox}
-					onPress={ () => this.props.setRole("Staff")}
+					onPress={this.props.updateRole.bind(null, "Staff")}
 				>
 					<Text style={style.personaChecked}>
 						{this.props.role === "Staff" ? "+    " : "       "}
@@ -51,7 +60,7 @@ class PersonaView extends Component {
 
 				<TouchableOpacity
 					style={style.personaBox}
-					onPress={ () => this.props.setRole("Faculty")}
+					onPress={this.props.updateRole.bind(null, "Faculty")}
 				>
 					<Text style={style.personaChecked}>
 						{this.props.role === "Faculty" ? "+    " : "       "}
@@ -64,7 +73,7 @@ class PersonaView extends Component {
 				<Text style={style.currentRole}>Current role: {this.props.role}</Text>
 				
 				<View style={style.goBackToHome}>
-					<TouchableOpacity onPress={ () => this.navigate("HomePage") }>
+					<TouchableOpacity onPress={ this.props.navigator.resetTo.bind(null, {name: "HomePage"}) } >
 						<Text style={style.goHome}>
 							Home
 						</Text>

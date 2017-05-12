@@ -12,7 +12,7 @@ class GoToHome extends Component {
 			<View style={styles.goToHomeBox } >
 				<Text style={styles.screenName}>{this.props.name}</Text>
 				<TouchableOpacity>
-					<Text style={styles.goToHomeWord} onPress={ () => this.props.navigator.resetTo({name: "HomePage"}) }> Home </Text>
+					<Text style={styles.goToHomeWord} onPress={ this.props.navigator.resetTo.bind(null, {name: "HomePage"}) }> Home </Text>
 				</TouchableOpacity>
 			</View>
 		)

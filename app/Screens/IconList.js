@@ -17,6 +17,7 @@ class IconList extends Component {
 			allNavItems: [
 				{
 					name: "Dining",
+					routeName: "Dining",
 					icon: require('../Images/dining_all_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -24,6 +25,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Sponsors",
+					routeName: "Sponsors",
 					icon: require('../Images/sponsors_346x346.png'),
 					isStudent: false,
 					isStaff: true,
@@ -31,6 +33,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Printspot",
+					routeName: "Printspot",
 					icon: require('../Images/printspot_all_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -38,6 +41,7 @@ class IconList extends Component {
 				},
 				{
 					name: "News",
+					routeName: "News",
 					icon: require('../Images/news_all_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -45,6 +49,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Bookstore",
+					routeName: "Bookstore",
 					icon: require('../Images/bookstore_all_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -52,6 +57,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Emergency",
+					routeName: "Emergency",
 					icon: require('../Images/emergencynumbers_all_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -59,6 +65,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Financial Aid",
+					routeName: "Financialaid",
 					icon: require('../Images/financialaid_all_346x346.png'),
 					isStudent: true,
 					isStaff: false,
@@ -66,6 +73,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Google",
+					routeName: "Google",
 					icon: require('../Images/google_logo_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -73,6 +81,7 @@ class IconList extends Component {
 				},
 				{
 					name: "Api Example",
+					routeName: "ApiExample",
 					icon: require('../Images/api_346x346.png'),
 					isStudent: true,
 					isStaff: true,
@@ -104,7 +113,7 @@ class IconList extends Component {
 				return (
 					<TouchableOpacity
 						key={item.name}
-						onPress={() => this.navigate(item.name)}
+						onPress={() => this.navigate(item.routeName)}
 						style={style.iconItem}
 					>
 						<View style={style.iconBox}>

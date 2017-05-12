@@ -59,7 +59,7 @@ class App extends Component {
 		} else if(route.name === 'Financialaid') {
 			return <FinancialAid navigator={navigator} name={"Financial Aid"}/>
 		} else if(route.name === 'PersonaView') {
-			return <PersonaView navigator={navigator} name={"PersonaView"} role={this.state.role} updateRole={this.updateRole}/>
+			return <PersonaView navigator={navigator} name={"Persona View"} role={this.state.role} updateRole={this.updateRole}/>
 		} else if(route.name === 'Google') {
 			return <Google navigator={navigator} name={"Google"} />
 		} else if(route.name === 'ApiExample') {

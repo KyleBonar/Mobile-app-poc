@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { View, TextInput, StyleSheet, Text } from 'react-native'
+import { View, TextInput, StyleSheet, Image } from 'react-native'
 
 class SearchBar extends Component {
 	constructor(props) {
@@ -15,6 +15,10 @@ class SearchBar extends Component {
 		return(
 			<View style={styles.searchBarContainer}>
 				<View style={styles.searchBarFake} >
+					<Image
+						source={require('../Images/search_346x346.png')}
+						style={styles.searchIcon}
+					/>
 					<TextInput
 						style={styles.searchBar}
 						value={this.state.text}
@@ -43,13 +47,20 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		paddingTop: 6,
 		paddingBottom: 6,
+		flexDirection: "row"
+	},
+	searchIcon: {
+		height: 20,
+		width: 20,
+		marginLeft: 10
 	},
 	searchBar: {	
 		backgroundColor: "#e8e8ee",
 		borderWidth: 0,
 		height: 20,
-		marginLeft: 20,
-		marginRight: 20
+		marginLeft: 10,
+		marginRight: 20,
+		flex: 1
 
 	}
 })
